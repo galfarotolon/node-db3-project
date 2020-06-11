@@ -35,3 +35,30 @@ JOIN EMPLOYEE as e ON o.EmployeeId = e.Id
 
 
 
+
+
+--------------------------- Stretch
+-- Displays CategoryName and a new column called Count that shows how many products are in each category. Shows 8 records.
+
+--to add a new column
+
+ALTER TABLE Categories
+ADD "Count" integer
+
+
+-- Display Category Name and Add how many products are in each category description
+
+
+SELECT CategoryName, LENGTH(Description) - LENGTH(replace(Description, ',', '')) +1 Count
+FROM Categories
+
+
+
+
+-- Display OrderID and a column called ItemCount that shows the total number of products placed on the order. Shows 196 records.
+
+
+SELECT OrderID, SUM(QUANTITY) AS ItemCount
+FROM OrderDetails
+GROUP BY OrderID
+
